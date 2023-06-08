@@ -1,19 +1,19 @@
 #[contract]
 mod HelloStarknet {
     struct Storage {
-        balance: felt252,
+        balance: u128,
     }
 
     // Increases the balance by the given amount.
     #[external]
-    fn increase_balance(amount: felt252) {
+    fn increase_balance(amount: u128) {
         assert(amount != 0, 'Amount cannot be 0');
         balance::write(balance::read() + amount);
     }
 
     // Returns the current balance.
     #[view]
-    fn get_balance() -> felt252 {
+    fn get_balance() -> u128 {
         balance::read()
     }
 
