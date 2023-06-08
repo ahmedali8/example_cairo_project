@@ -8,6 +8,7 @@ mod HelloStarknet {
     #[external]
     fn increase_balance(amount: u128) {
         assert(amount != 0, 'Amount cannot be 0');
+        assert(amount % 2 == 0, 'Amount cannot be odd');
         balance::write(balance::read() + amount);
     }
 
