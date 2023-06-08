@@ -29,3 +29,10 @@ fn test_cannot_increase_balance_with_zero_value() {
 
     assert(invoke_result.is_err(), 'Invoke should fail');
 }
+
+#[test]
+fn test_get_two() {
+    let contract_address = deploy_contract('hello_starknet', @ArrayTrait::new()).unwrap();
+    let result = call(contract_address, 'get_two', @ArrayTrait::new()).unwrap();
+    assert(*result.at(0_u32) == 2, 'Invalid result');
+}
